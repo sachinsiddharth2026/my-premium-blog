@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Research — NEXUS</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans">
+
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-slate-900/80 border-b border-slate-800/60 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold tracking-wider bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">NEXUS</a>
+            <a href="index.html" class="text-sm text-slate-400 hover:text-white flex items-center gap-1"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-6 py-16">
+        <span class="text-xs font-bold tracking-widest text-amber-400 uppercase bg-amber-400/10 px-3 py-1 rounded-full border border-amber-500/20">Deep Research Report</span>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-4 text-slate-100 leading-tight">The Future of Market Volatility & AI Trading Nodes</h1>
+        <p class="text-slate-500 mt-3 text-sm">Published by Research Team • 5 min read • May 20, 2026</p>
+
+        <div class="mt-8 text-slate-300 text-lg space-y-6 leading-relaxed">
+            <p>जब हम फाइनेंस और टेक्नोलॉजी (FinTech) के कॉम्बिनेशन की बात करते हैं, तो डेटा सिक्योरिटी सबसे पहला कदम होती है। एल्गोरिद्मिक ट्रेडिंग में सेकंड्स के हजारवें हिस्से का भी महत्व होता है।</p>
+            
+            <div class="relative mt-8">
+                <div class="select-none blur-md opacity-20 space-y-4 pointer-events-none">
+                    <p>This is premium hidden data containing exclusive study charts, future predictions, and secret financial tools formulas that regular users cannot see without a subscription plan.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Core statistics show a 400% growth potential in asset allocation tokens during the Q4 cycle of this fiscal year.</p>
+                </div>
+
+                <div class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-t from-slate-950 via-slate-950/95 to-transparent p-8 text-center rounded-2xl border border-slate-800">
+                    <div class="bg-amber-500/15 p-4 rounded-full text-amber-400 mb-4"><i data-lucide="lock" class="w-8 h-8"></i></div>
+                    <h3 class="text-2xl font-bold text-slate-100">Unlock Deep Research & Materials</h3>
+                    <p class="text-slate-400 text-sm max-w-md mt-2 mb-6">This exclusive section contains high-value financial reports, downloadable tech codes, and verified premium study notes.</p>
+                    <button onclick="alert('Redirecting to Payment Gateway...')" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-6 py-3 rounded-xl shadow-lg shadow-amber-400/20 transition-all cursor-pointer">Upgrade to Premium Plan</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="mt-20 bg-slate-900/30 border border-slate-900 rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-slate-100 mb-6 flex items-center gap-2"><i data-lucide="message-square" class="text-emerald-400"></i> Discussion</h3>
+            <div class="flex gap-3 mb-6">
+                <input id="commentInput" type="text" placeholder="Write a comment..." class="bg-slate-900 border border-slate-800 text-sm rounded-xl px-4 py-3 w-full focus:outline-none focus:border-emerald-500 text-slate-200">
+                <button onclick="addComment()" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 p-3 rounded-xl transition-all cursor-pointer"><i data-lucide="send" class="w-4 h-4"></i></button>
+            </div>
+            <div id="commentsList" class="space-y-4">
+                <div class="border-b border-slate-900 pb-3"><div class="text-sm font-semibold text-emerald-400">Sachin Siddharth</div><div class="text-slate-300 text-sm mt-1">Excellent depth on this financial research!</div></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        function addComment() {
+            const input = document.getElementById('commentInput');
+            if(!input.value.trim()) return;
+            const list = document.getElementById('commentsList');
+            const newDiv = document.createElement('div');
+            newDiv.className = 'border-b border-slate-900 pb-3';
+            newDiv.innerHTML = `<div class="text-sm font-semibold text-emerald-400">Guest User</div><div class="text-slate-300 text-sm mt-1">${input.value}</div>`;
+            list.insertBefore(newDiv, list.firstChild);
+            input.value = '';
+        }
+    </script>
+</body>
+</html>
