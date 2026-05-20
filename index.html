@@ -124,12 +124,10 @@
     <script>
         lucide.createIcons();
 
-        // 1. Live Filter System (कैटेगरी बटन्स के लिए)
         function filterCategory(category) {
             const cards = document.querySelectorAll('.blog-card');
             const buttons = document.querySelectorAll('.filter-btn');
             
-            // बटन एक्टिव कलर चेंज करने के लिए
             buttons.forEach(btn => {
                 btn.className = "filter-btn px-5 py-2 rounded-full text-sm font-medium border border-slate-800 bg-slate-900/50 text-slate-300 hover:border-slate-700 hover:text-white cursor-pointer transition-all";
             });
@@ -141,7 +139,6 @@
                 activeBtn.className = "filter-btn px-5 py-2 rounded-full text-sm font-medium bg-emerald-500 text-slate-950 font-bold cursor-pointer transition-all shadow-lg shadow-emerald-500/10";
             }
 
-            // कार्ड्स छुपाने और दिखाने का लॉजिक
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
                     card.style.display = 'flex';
@@ -151,7 +148,6 @@
             });
         }
 
-        // 2. Live Global Search System (सर्च बार टाइपिंग के लिए)
         function liveSearch() {
             const query = document.getElementById('globalSearch').value.toLowerCase().trim();
             const cards = document.querySelectorAll('.blog-card');
@@ -175,7 +171,6 @@
             }
         }
 
-        // 3. User Mock Auth Modal (लॉगिन पॉपअप शो/हाइड)
         function toggleAuthModal(type) {
             const modal = document.getElementById('authModal');
             const title = document.getElementById('modalTitle');
@@ -189,7 +184,6 @@
 
         function mockLogin() {
             const userSection = document.getElementById('userSection');
-            // लॉग इन होने के बाद यूजर प्रोफाइल आइकॉन दिखाने के लिए
             userSection.innerHTML = `
                 <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-full pl-3 pr-1 py-1">
                     <span class="text-xs text-slate-300 font-medium">Sachin Siddharth</span>
