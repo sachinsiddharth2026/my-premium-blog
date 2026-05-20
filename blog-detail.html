@@ -27,14 +27,14 @@
             <div class="relative mt-8">
                 <div class="select-none blur-md opacity-20 space-y-4 pointer-events-none">
                     <p>This is premium hidden data containing exclusive study charts, future predictions, and secret financial tools formulas that regular users cannot see without a subscription plan.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Core statistics show a 400% growth potential in asset allocation tokens during the Q4 cycle of this fiscal year.</p>
                 </div>
 
                 <div class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-t from-slate-950 via-slate-950/95 to-transparent p-8 text-center rounded-2xl border border-slate-800">
                     <div class="bg-amber-500/15 p-4 rounded-full text-amber-400 mb-4"><i data-lucide="lock" class="w-8 h-8"></i></div>
                     <h3 class="text-2xl font-bold text-slate-100">Unlock Deep Research & Materials</h3>
                     <p class="text-slate-400 text-sm max-w-md mt-2 mb-6">This exclusive section contains high-value financial reports, downloadable tech codes, and verified premium study notes.</p>
-                    <button onclick="alert('Redirecting to Payment Gateway...')" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-6 py-3 rounded-xl shadow-lg shadow-amber-400/20 transition-all cursor-pointer">Upgrade to Premium Plan</button>
+                    
+                    <a href="https://cosmofeed.com/" target="_blank" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-6 py-3 rounded-xl shadow-lg shadow-amber-400/20 transition-all cursor-pointer">Upgrade to Premium Plan</a>
                 </div>
             </div>
         </div>
@@ -42,11 +42,14 @@
         <section class="mt-20 bg-slate-900/30 border border-slate-900 rounded-2xl p-6">
             <h3 class="text-xl font-bold text-slate-100 mb-6 flex items-center gap-2"><i data-lucide="message-square" class="text-emerald-400"></i> Discussion</h3>
             <div class="flex gap-3 mb-6">
-                <input id="commentInput" type="text" placeholder="Write a comment..." class="bg-slate-900 border border-slate-800 text-sm rounded-xl px-4 py-3 w-full focus:outline-none focus:border-emerald-500 text-slate-200">
+                <input id="commentInput" type="text" placeholder="Write a comment..." class="bg-slate-950 border border-slate-800 text-sm rounded-xl px-4 py-3 w-full focus:outline-none focus:border-emerald-500 text-slate-200">
                 <button onclick="addComment()" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 p-3 rounded-xl transition-all cursor-pointer"><i data-lucide="send" class="w-4 h-4"></i></button>
             </div>
             <div id="commentsList" class="space-y-4">
-                <div class="border-b border-slate-900 pb-3"><div class="text-sm font-semibold text-emerald-400">Sachin Siddharth</div><div class="text-slate-300 text-sm mt-1">Excellent depth on this financial research!</div></div>
+                <div class="border-b border-slate-900/50 pb-3">
+                    <div class="text-sm font-semibold text-emerald-400">Sachin Siddharth</div>
+                    <div class="text-slate-300 text-sm mt-1">Excellent depth on this financial research!</div>
+                </div>
             </div>
         </section>
     </main>
@@ -58,8 +61,8 @@
             if(!input.value.trim()) return;
             const list = document.getElementById('commentsList');
             const newDiv = document.createElement('div');
-            newDiv.className = 'border-b border-slate-900 pb-3';
-            newDiv.innerHTML = `<div class="text-sm font-semibold text-emerald-400">Guest User</div><div class="text-slate-300 text-sm mt-1">${input.value}</div>`;
+            newDiv.className = 'border-b border-slate-900/50 pb-3';
+            newDiv.innerHTML = `<div class="text-sm font-semibold text-cyan-400">Guest User</div><div class="text-slate-300 text-sm mt-1">${input.value}</div>`;
             list.insertBefore(newDiv, list.firstChild);
             input.value = '';
         }
