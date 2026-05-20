@@ -11,16 +11,24 @@
 
     <div id="authModal" class="fixed inset-0 z-50 invisible flex items-center justify-center bg-slate-950/80 backdrop-blur-sm transition-all duration-300">
         <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl max-w-sm w-full mx-4 relative shadow-2xl">
-            <button onclick="toggleAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white cursor-pointer">
+            <button onclick="toggleAuthModal()" type="button" class="absolute top-4 right-4 text-slate-400 hover:text-white cursor-pointer">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             <h3 id="modalTitle" class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2">Welcome Back</h3>
             <p class="text-slate-400 text-sm mb-6">Enter your details to access your dashboard.</p>
-            <div class="space-y-4">
-                <input type="email" placeholder="Email Address" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-200">
-                <input type="password" placeholder="Password" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-200">
-                <button onclick="mockLogin()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-3 rounded-xl shadow-lg shadow-emerald-500/10 transition-all cursor-pointer mt-2">Continue</button>
-            </div>
+            
+            <form onsubmit="mockLogin(event)" class="space-y-4">
+                <input type="email" id="authEmail" required autocomplete="email" placeholder="Email Address" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-200">
+                
+                <div class="relative">
+                    <input type="password" id="authPassword" required autocomplete="current-password" placeholder="Password" class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-4 pr-10 py-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-200">
+                    <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-3.5 text-slate-400 hover:text-white cursor-pointer">
+                        <i id="passwordIcon" data-lucide="eye" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                
+                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-3 rounded-xl shadow-lg shadow-emerald-500/10 transition-all cursor-pointer mt-2">Continue</button>
+            </form>
         </div>
     </div>
 
@@ -122,7 +130,14 @@
     </footer>
 
     <script>
-        lucide.createIcons();
+        // Check local storage on load to keep user logged in
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+            const loggedInUser = localStorage.getItem("username");
+            if (loggedInUser) {
+                renderUserSection(loggedInUser);
+            }
+        });
 
         function filterCategory(category) {
             const cards = document.querySelectorAll('.blog-card');
@@ -182,15 +197,41 @@
             modal.classList.toggle('invisible');
         }
 
-        function mockLogin() {
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('authPassword');
+            const icon = document.getElementById('passwordIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.setAttribute('data-lucide', 'eye-off');
+            } else {
+                passwordInput.type = 'password';
+                icon.setAttribute('data-lucide', 'eye');
+            }
+            lucide.createIcons();
+        }
+
+        function mockLogin(event) {
+            event.preventDefault(); // Prevents page reload on form submit
+            const name = "Sachin Siddharth";
+            localStorage.setItem("username", name); // Save session permanently
+            renderUserSection(name);
+            toggleAuthModal();
+        }
+
+        function renderUserSection(name) {
             const userSection = document.getElementById('userSection');
             userSection.innerHTML = `
                 <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-full pl-3 pr-1 py-1">
-                    <span class="text-xs text-slate-300 font-medium">Sachin Siddharth</span>
+                    <span class="text-xs text-slate-300 font-medium">${name}</span>
                     <div class="w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-bold flex items-center justify-center text-xs">S</div>
+                    <button onclick="logout()" class="text-xs text-slate-500 hover:text-rose-400 ml-1 mr-2 cursor-pointer">Logout</button>
                 </div>
             `;
-            toggleAuthModal();
+        }
+
+        function logout() {
+            localStorage.removeItem("username");
+            location.reload();
         }
     </script>
 </body>
