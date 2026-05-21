@@ -11,11 +11,11 @@ collections:
     folder: "_posts"
     create: true
     slug: "{{slug}}"
+    format: "json"
     fields:
-      - { label: "ID", name: "id", widget: "string" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
       - { label: "Is Premium", name: "isPremium", widget: "boolean", default: false }
-      - { label: "Free Content", name: "freeContent", widget: "markdown" }
-      - { label: "Premium Content", name: "premiumContent", widget: "markdown" }
+      - { label: "Free Content (Public)", name: "freeContent", widget: "markdown" }
+      - { label: "Premium Content (Locked)", name: "premiumContent", widget: "markdown" }
