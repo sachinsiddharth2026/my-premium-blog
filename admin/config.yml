@@ -1,0 +1,24 @@
+backend:
+  name: github
+  repo: sachinsiddharth2026/my-premium-blog
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "blogs"
+    label: "NEXUS Articles"
+    folder: "/"
+    format: "json"
+    file: "blogs.json"
+    fields:
+      - { label: "URL ID", name: "id", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["finance", "technical", "research"] }
+      - { label: "Date", name: "date", widget: "string" }
+      - { label: "Short Description", name: "shortDescription", widget: "text" }
+      - { label: "Free Content", name: "freeContent", widget: "markdown" }
+      - { label: "Premium Content", name: "premiumContent", widget: "markdown" }
+      - { label: "Price", name: "price", widget: "string", default: "29" }
+      - { label: "Payment Link", name: "paymentLink", widget: "string" }
