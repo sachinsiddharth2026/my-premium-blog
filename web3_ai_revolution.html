@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS - Web3 & AI Revolution 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. THE SETUP */
+        * { box-sizing: border-box; }
+        body { background-color: #0f172a; display: grid; gap: 20px; grid-template-columns: 1fr; margin: 0; min-height: 100vh; padding: 20px 0; place-items: center; }
+
+        .slide-container {
+            align-items: flex-start;
+            background-color: #000;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Urbanist', sans-serif;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 50px;
+            position: relative;
+            width: 1280px;
+        }
+
+        /* Gradient Background Blobs for Aesthetic */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(222, 255, 154, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .slide-container::after {
+            background: rgba(222, 255, 154, 0.3);
+            bottom: 40px;
+            content: '';
+            height: 2px;
+            left: 50px;
+            position: absolute;
+            right: 50px;
+        }
+
+        .slide-container > * { position: relative; z-index: 1; }
+
+        /* Typography */
+        h1, h2, h3 { color: #f5f5f5; font-weight: 700; margin: 0; }
+        h1 span, h2 span { color: #deff9a; }
+        p, li { color: #cbd5e1; font-family: 'Lato', sans-serif; font-size: 20px; line-height: 1.6; }
+
+        h1 { font-size: 80px; line-height: 1.1; }
+        .slide-title { font-size: 50px; margin-bottom: 40px; width: 100%; border-left: 5px solid #deff9a; padding-left: 20px; }
+        h3 { font-size: 28px; color: #deff9a; margin-bottom: 15px; }
+
+        .content-area { flex-grow: 1; width: 100%; display: flex; align-items: center; justify-content: center; }
+
+        /* Layout Definitions */
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; }
+        
+        .tiled-content { display: flex; gap: 30px; width: 100%; height: 400px; }
+        .tile { 
+            background: #1a1a1a; border: 1px solid #333; border-radius: 20px; flex: 1; padding: 30px; 
+            transition: transform 0.3s ease; display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+        .tile .icon { font-size: 50px; color: #deff9a; margin-bottom: 20px; }
+
+        .image-wrapper { border-radius: 24px; overflow: hidden; border: 1px solid #deff9a; height: 400px; width: 100%; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Highlight Numbers */
+        .number-box { text-align: center; }
+        .number { font-size: 140px; font-weight: 700; color: #deff9a; line-height: 1; }
+        .number-label { font-size: 24px; font-weight: 500; color: #f5f5f5; }
+
+        /* Quote */
+        .quote-box { text-align: center; max-width: 900px; margin: 0 auto; }
+        blockquote { font-size: 44px; font-style: italic; color: #f5f5f5; border: none; padding: 0; position: relative; }
+        blockquote::before { content: '“'; font-size: 120px; position: absolute; left: -60px; top: -40px; opacity: 0.2; color: #deff9a; }
+        cite { display: block; margin-top: 20px; font-size: 24px; color: #deff9a; font-weight: 700; }
+
+        /* Styled Bullets */
+        .bullet-list { list-style: none; padding: 0; }
+        .bullet-list li { position: relative; padding-left: 50px; margin-bottom: 25px; font-size: 24px; }
+        .bullet-list li i { position: absolute; left: 0; top: 5px; color: #deff9a; font-size: 28px; }
+
+        /* Bleed Image Layout */
+        .slide-container.bleed-image-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; align-items: start; }
+        .bleed-image-layout .content-container { padding: 80px 0 60px 60px; display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        .bleed-image-layout .image-container { height: 720px; width: 100%; }
+        .bleed-image-layout .image-container img { height: 720px; width: 100%; object-fit: cover; border-radius: 0; border: none; }
+
+        /* Section Title Layout */
+        .section-title-layout { text-align: center; width: 100%; }
+        .section-title-layout hr { width: 100px; height: 6px; background: #deff9a; border: none; margin: 30px auto; }
+
+        /* Table */
+        table { width: 100%; border-collapse: collapse; background: #111; border-radius: 12px; overflow: hidden; }
+        th { background: #deff9a; color: #000; padding: 20px; text-align: left; font-size: 22px; }
+        td { padding: 20px; border-bottom: 1px solid #333; font-size: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container" id="slide1">
+        <div style="text-align: center; width: 100%;">
+            <h1>NEXUS: <span>2026</span><br>Digital Economy</h1>
+            <p style="font-size: 30px; margin-top: 20px;">Mastering the Web3 and AI Creator Revolution.</p>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide2">
+        <div class="section-title-layout">
+            <hr>
+            <h2>The Great <span>Paradigm Shift</span></h2>
+            <p style="max-width: 800px; margin: 0 auto;">Moving from centralized control to decentralized ownership.</p>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide3">
+        <h2 class="slide-title">Web2 vs Web3 Dynamics</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div style="background: #111; padding: 40px; border-radius: 24px; border-top: 4px solid #deff9a;">
+                    <h3>Web2: The Old Guard</h3>
+                    <p>Monopolized data by tech giants. Algorithms control your reach, and censorship is just a click away for platforms like YouTube and Instagram.</p>
+                </div>
+                <div style="background: #111; padding: 40px; border-radius: 24px; border-top: 4px solid #deff9a;">
+                    <h3>Web3: The New Power</h3>
+                    <p>Ownership via Blockchain. You control your digital assets and identity through cryptographic wallets. Permissionless monetization starts here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide4">
+        <h2 class="slide-title">Powering Content with AI</h2>
+        <div class="content-area">
+            <div class="two-column" style="align-items: center;">
+                <div class="image-wrapper" style="border-radius: 50%; width: 450px; height: 450px; margin: 0 auto;">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/5348595134596817600" alt="Futuristic Node">
+                </div>
+                <div>
+                    <h3>AI as a Scale Multiplier</h3>
+                    <p>In 2026, AI is no longer a tool, but a teammate. Solo creators are now scaling to millions of views using AI-automated workflows for scripting, voiceover, and video editing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide5">
+        <h2 class="slide-title">The Monetization Engine</h2>
+        <div class="content-area">
+            <div class="two-column" style="align-items: center;">
+                <div>
+                    <h3>Micro-Payments & NFTs</h3>
+                    <p>By bypassing traditional bank gateways and using direct payment links or crypto tokens, creators on platforms like NEXUS retain 99% of their earnings.</p>
+                    <ul class="bullet-list" style="margin-top: 20px;">
+                        <li><i class="fa-solid fa-bolt"></i> Instant payouts to your wallet.</li>
+                        <li><i class="fa-solid fa-lock"></i> Content secured by smart contracts.</li>
+                    </ul>
+                </div>
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/2041831826919877223" style="object-fit: contain;" alt="AI Brain">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container bleed-image-layout" id="slide6">
+        <div class="content-container">
+            <h2 class="slide-title">Faceless AI Channels</h2>
+            <h3>Anonymity is the New Luxury</h3>
+            <p>Using 3D digital avatars, creators can reach global audiences without ever showing their real face. This ensures privacy while building massive personal brands.</p>
+        </div>
+        <div class="image-container">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/572372118240495680" alt="Holographic Avatars">
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide7">
+        <h2 class="slide-title">3 Secret Strategies for 2026</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3>AI Agents</h3>
+                    <p>Deploy custom AI agents to handle 24/7 customer queries and personalized content delivery.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>Social Tokens</h3>
+                    <p>Launch your own creator token to grant exclusive access to your inner circle and governance.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-link"></i></div>
+                    <h3>Pay-per-Insight</h3>
+                    <p>Ditch the subscriptions. Let users pay a few rupees for exactly what they need, when they need it.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide8">
+        <h2 class="slide-title">The New Mantra</h2>
+        <div class="content-area">
+            <div class="quote-box">
+                <blockquote>"In the age of AI, attention is the currency, but decentralized ownership is the fortress."</blockquote>
+                <cite>— The NEXUS Manifesto</cite>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide9">
+        <h2 class="slide-title">The Creator Reality Check</h2>
+        <div class="content-area">
+            <div class="two-column" style="align-items: center;">
+                <div class="number-box">
+                    <div class="number">40%</div>
+                    <div class="number-label">Decline in Course Sales</div>
+                </div>
+                <div style="padding-left: 40px;">
+                    <h3>The Death of Static Courses</h3>
+                    <p>Data shows that traditional, pre-recorded video courses are losing power. Modern users demand interactive, AI-driven, and bite-sized learning experiences like NEXUS blogs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide10">
+        <h2 class="slide-title">Your 2026 Action Plan</h2>
+        <div class="content-area">
+            <ul class="bullet-list">
+                <li><i class="fa-solid fa-circle-check"></i> <strong>Set up NEXUS CMS:</strong> Automate your publishing pipeline.</li>
+                <li><i class="fa-solid fa-circle-check"></i> <strong>Integrate Razorpay:</strong> Secure your micro-payment infrastructure.</li>
+                <li><i class="fa-solid fa-circle-check"></i> <strong>Leverage AI Tools:</strong> Use ChatGPT and Midjourney for high-end aesthetics.</li>
+                <li><i class="fa-solid fa-circle-check"></i> <strong>Go Live:</strong> Share your insights and start your digital empire.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide11">
+        <h2 class="slide-title">Essential Tools of the Trade</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile" style="padding: 10px; background: transparent; border: none;">
+                    <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/11651522671874809686" alt="Metamask"></div>
+                    <p style="margin-top: 15px;">Web3 Wallet Access</p>
+                </div>
+                <div class="tile" style="padding: 10px; background: transparent; border: none;">
+                    <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/15375569396932239540" alt="AI Tools"></div>
+                    <p style="margin-top: 15px;">AI Generation Suite</p>
+                </div>
+                <div class="tile" style="padding: 10px; background: transparent; border: none;">
+                    <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/7248254339863765937" alt="Payments"></div>
+                    <p style="margin-top: 15px;">Secure Payment Gateway</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide12">
+        <div style="text-align: center; width: 100%;">
+            <h2 style="font-size: 80px; margin-bottom: 30px;">Ready to <span>Build?</span></h2>
+            <p style="font-size: 24px;">Your journey to becoming a 2026 digital tycoon starts with NEXUS.</p>
+            <div style="margin-top: 50px; color: #deff9a; font-weight: 700;">
+                www.nexusblog.netlify.app | @sachinsiddharth2026
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
