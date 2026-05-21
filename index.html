@@ -4,71 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXUS - Premium Knowledge Hub</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans">
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans">
 
-    <nav class="sticky top-0 z-50 backdrop-blur-md bg-slate-900/80 border-b border-slate-800/60 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="index.html" class="text-2xl font-bold tracking-wider bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">NEXUS</a>
+    <nav class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl font-black tracking-wider text-cyan-400">NEXUS</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <div data-netlify-identity-menu></div>
+            </div>
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-6 py-12">
-        <h1 class="text-4xl font-extrabold text-center mb-12 bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent">Explore Premium Insights</h1>
-        
-        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-cyan-400 via-teal-200 to-indigo-400 bg-clip-text text-transparent">
+                Explore Premium Insights
+            </h1>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+                Mastering the Web3 and AI Creator Revolution with actionable strategies.
+            </p>
+        </div>
+
+        <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             </div>
     </main>
 
     <script>
-        // Netlify Identity Login Redirect
+        // Netlify Identity Redirect Setup
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {
-                if (!user) { window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; }); }
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
             });
         }
 
-        // Fetch posts from Netlify/GitHub API
-        async function loadBlogs() {
-            const grid = document.getElementById('blog-grid');
+        // Fetching blog articles from GitHub repository path
+        async function loadArticles() {
+            const grid = document.getElementById('articles-grid');
             try {
-                // Fetch list of files from _posts folder via public access
+                // Fetching the published articles from your _posts folder
                 const response = await fetch('https://api.github.com/repos/sachinsiddharth2026/my-premium-blog/contents/_posts');
                 const files = await response.json();
                 
                 if(!files || files.length === 0) {
-                    grid.innerHTML = `<p class="text-slate-400 text-center col-span-full">No articles published yet. Add one from Admin Panel!</p>`;
+                    grid.innerHTML = `<p class="text-slate-500 col-span-full text-center">No articles found. Publish one from CMS!</p>`;
                     return;
                 }
 
                 for (let file of files) {
-                    if (file.name.endsWith('.json') || file.name.endsWith('.md')) {
-                        const postRes = await fetch(file.download_url);
-                        const post = await postRes.json();
+                    if (file.name.endsWith('.json')) {
+                        const res = await fetch(file.download_url);
+                        const article = await res.json();
                         
                         const card = document.createElement('div');
-                        card.className = "bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 hover:border-emerald-500/40 transition duration-300 flex flex-col justify-between";
+                        card.className = "bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition duration-300 flex flex-col justify-between";
                         card.innerHTML = `
                             <div>
                                 <div class="flex justify-between items-center mb-4">
-                                    <span class="text-xs font-bold text-slate-400">${post.date}</span>
-                                    ${post.isPremium ? '<span class="px-2.5 py-1 text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full">Premium</span>' : '<span class="px-2.5 py-1 text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full">Free</span>'}
+                                    <span class="text-xs text-slate-500">${article.date || 'Recent'}</span>
+                                    ${article.isPremium ? '<span class="px-2 py-1 text-xs bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20 font-medium">Premium</span>' : '<span class="px-2 py-1 text-xs bg-green-500/10 text-green-400 rounded-full border border-green-500/20 font-medium">Free</span>'}
                                 </div>
-                                <h3 class="text-xl font-bold mb-2 text-slate-100">${post.title}</h3>
-                                <p class="text-slate-400 text-sm line-clamp-3 mb-6">${post.description}</p>
+                                <h3 class="text-xl font-bold text-slate-100 mb-2 line-clamp-2">${article.title}</h3>
+                                <p class="text-slate-400 text-sm mb-6 line-clamp-3">${article.description}</p>
                             </div>
-                            <a href="blog-detail.html?id=${post.id}&file=${file.name}" class="w-full text-center py-2.5 bg-slate-800 hover:bg-emerald-600 font-medium rounded-xl transition duration-200 block text-sm">Read Article</a>
+                            <button onclick="viewArticle('${file.name}')" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2.5 rounded-xl font-medium transition text-sm">
+                                Read Article
+                            </button>
                         `;
                         grid.appendChild(card);
                     }
                 }
             } catch (err) {
-                grid.innerHTML = `<p class="text-slate-400 text-center col-span-full">Write your first post from the admin panel to display here.</p>`;
+                grid.innerHTML = `<p class="text-rose-400 col-span-full text-center">Failed to load articles. Please check repository path.</p>`;
             }
         }
-        loadBlogs();
+
+        function viewArticle(fileName) {
+            // Redirecting to detail view with exact filename
+            window.location.href = `blog-detail.html?file=${fileName}`;
+        }
+
+        window.addEventListener('DOMContentLoaded', loadArticles);
     </script>
 </body>
 </html>
