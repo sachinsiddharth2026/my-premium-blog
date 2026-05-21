@@ -2,8 +2,6 @@ backend:
   name: git-gateway
   branch: main
 
-local_backend: true
-
 media_folder: "images"
 public_folder: "/images"
 
@@ -14,7 +12,10 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
+      - { label: "ID", name: "id", widget: "string" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Publish Date", name: "date", widget: "string" }
+      - { label: "Is Premium", name: "isPremium", widget: "boolean", default: false }
+      - { label: "Free Content", name: "freeContent", widget: "markdown" }
+      - { label: "Premium Content", name: "premiumContent", widget: "markdown" }
