@@ -1,24 +1,20 @@
 backend:
-  name: github
-  repo: sachinsiddharth2026/my-premium-blog
+  name: git-gateway
   branch: main
+
+local_backend: true
 
 media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "blogs"
+  - name: "blog"
     label: "NEXUS Articles"
-    folder: "/"
-    format: "json"
-    file: "blogs.json"
+    folder: "_posts"
+    create: true
+    slug: "{{slug}}"
     fields:
-      - { label: "URL ID", name: "id", widget: "string" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Category", name: "category", widget: "select", options: ["finance", "technical", "research"] }
-      - { label: "Date", name: "date", widget: "string" }
-      - { label: "Short Description", name: "shortDescription", widget: "text" }
-      - { label: "Free Content", name: "freeContent", widget: "markdown" }
-      - { label: "Premium Content", name: "premiumContent", widget: "markdown" }
-      - { label: "Price", name: "price", widget: "string", default: "29" }
-      - { label: "Payment Link", name: "paymentLink", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
