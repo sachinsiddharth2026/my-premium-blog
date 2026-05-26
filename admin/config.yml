@@ -11,11 +11,11 @@ collections:
     folder: "_posts"
     create: true
     slug: "{{slug}}"
-    format: "json"
     fields:
+      - { label: "Category Filter Type", name: "id", widget: "select", options: ["Finance", "Technical", "Study Materials", "Deep Research"] }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "string" }
       - { label: "Is Premium", name: "isPremium", widget: "boolean", default: false }
       - { label: "Free Content (Public)", name: "freeContent", widget: "markdown" }
       - { label: "Premium Content (Locked)", name: "premiumContent", widget: "markdown" }
